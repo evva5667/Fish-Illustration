@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Interactive Fish</title>
+</head>
+<body>
+    <div style="text-align: center; margin: 20px; font-family: 'Myriad Pro', Arial, sans-serif; font-size: 24px; color: #333;">
+        Click on me to see how many colours I can change
+    </div>
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -20 1491.19 462" style="width: 100%; max-width: 800px; margin: 20px auto; display: block; overflow: visible;">
+      <defs>
+        <style>
+          .cls-1 {
+            fill: #bf0000;
+          }
+          .cls-2 {
+            fill: #f9d11f;
+          }
+          .cls-3 {
+            fill: #ff7e50;
+          }
+          .cls-4 {
+            fill: #fff;
+          }
+          .cls-5 {
+            fill: #002439;
+          }
+          .cls-6 {
+            fill: red;
+          }
+          .cls-7 {
+            fill: #4d7cff;
+          }
+        </style>
+      </defs>
+      <g id="Layer_02" data-name="Layer 02">
+        <g class="blue-fish" style="cursor: pointer;">
+          <path class="cls-5 blue-body" d="M494.31,113.03c-62.85.53-113.64,51.64-113.64,114.62s50.79,114.09,113.64,114.62V113.03Z"/>
+          <path class="cls-2" d="M93.48,0h243.46C399.32,0,449.97,50.65,449.97,113.03h-243.46c-62.38,0-113.03-50.65-113.03-113.03h0Z"/>
+          <rect class="cls-7 blue-main" x="225.85" y="60.99" width="171.09" height="307.97"/>
+          <path class="cls-5 blue-body" d="M181.79,60.99c-55.98,0-101.37,45.38-101.37,101.37v104.29c0,26.78-21.5,48.52-48.18,48.93v53.38h193.61V60.99h-44.06Z"/>
+          <path class="cls-2" d="M31.47,315.6H0v53.36h32.24v-53.38c-.26,0-.51.02-.77.02Z"/>
+          <circle class="cls-4" cx="129.05" cy="289.87" r="13.07" transform="translate(-167.17 176.15) rotate(-45)"/>
+          <path class="cls-5 blue-body" d="M249.76,237.22h0s78.37,0,78.37,0v78.37h0c-43.28,0-78.37-35.09-78.37-78.37Z"/>
+          <path class="cls-7 blue-main" d="M142.12,368.96h116.24c29.29,0,53.04,23.75,53.04,53.04h0s-116.24,0-116.24,0c-29.29,0-53.04-23.75-53.04-53.04Z"/>
+        </g>
+      </g>
+      <g id="Layer_01" data-name="Layer 01">
+        <g class="red-fish" style="cursor: pointer;">
+          <path class="cls-2" d="M847.12,33.31h197.56c48.06,0,87.08,39.02,87.08,87.08v23.43h-197.56c-48.06,0-87.08-39.02-87.08-87.08v-23.43h0Z"/>
+          <path class="cls-6 red-main" d="M1147.7,152.06c-92.36-92.36-242.1-92.36-334.45,0l-88.13,88.13h510.72l-88.13-88.13Z"/>
+          <path class="cls-1 red-body" d="M1147.7,328.33l88.13-88.13h-510.72l88.13,88.13c92.36,92.36,242.1,92.36,334.45,0Z"/>
+          <circle class="cls-5" cx="845" cy="188.26" r="21.8" transform="translate(467.63 967.4) rotate(-76.72)"/>
+          <path class="cls-2" d="M1235.84,85.18h50.42c57.92,0,104.94,47.02,104.94,104.94v50.42h-50.42c-57.92,0-104.94-47.02-104.94-104.94v-50.42h0Z"/>
+          <path class="cls-3" d="M1340.78,240.2h50.42v50.42c0,57.92-47.02,104.94-104.94,104.94h-50.42v-50.42c0-57.92,47.02-104.94,104.94-104.94Z" transform="translate(2627.03 635.75) rotate(180)"/>
+          <path class="cls-6 red-main" d="M1009.73,214.65h0v104.25h-99.48v-4.77c0-54.91,44.58-99.48,99.48-99.48Z"/>
+        </g>
+      </g>
+    </svg>
+
+    <script>
+    // Wait for the DOM to load
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        // Array of vibrant colors for fish to change to
+        const colors = [
+            '#FF6B6B', // Coral Red
+            '#4ECDC4', // Turquoise
+            '#45B7D1', // Sky Blue
+            '#96CEB4', // Mint Green
+            '#FFEAA7', // Warm Yellow
+            '#DDA0DD', // Plum
+            '#FFB347', // Peach
+            '#87CEEB', // Light Blue
+            '#98FB98', // Pale Green
+            '#F0A500', // Orange
+            '#E74C3C', // Red
+            '#9B59B6', // Purple
+            '#3498DB', // Blue
+            '#2ECC71', // Green
+            '#F39C12', // Orange Yellow
+            '#E91E63', // Pink
+            '#00BCD4', // Cyan
+            '#8BC34A', // Light Green
+            '#FF9800', // Deep Orange
+            '#673AB7'  // Deep Purple
+        ];
+        
+        // Add click events to specific fish groups
+        const blueFish = document.querySelector('.blue-fish');
+        const redFish = document.querySelector('.red-fish');
+        
+        // Function to get random color
+        function getRandomColor() {
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+        
+        // Blue fish click handler
+        blueFish.addEventListener('click', function(event) {
+            event.stopPropagation();
+            changeBlueFishColors();
+        });
+        
+        // Red fish click handler
+        redFish.addEventListener('click', function(event) {
+            event.stopPropagation();
+            changeRedFishColors();
+        });
+        
+        // Function to change blue fish colors
+        function changeBlueFishColors() {
+            const blueMainParts = document.querySelectorAll('.blue-main');
+            const blueBodyParts = document.querySelectorAll('.blue-body');
+            
+            const mainColor = getRandomColor();
+            const bodyColor = getRandomColor();
+            
+            // Change main blue parts
+            blueMainParts.forEach(part => {
+                part.style.fill = mainColor;
+            });
+            
+            // Change body parts
+            blueBodyParts.forEach(part => {
+                part.style.fill = bodyColor;
+            });
+            
+            // Add a subtle animation effect with better scaling
+            blueFish.style.transformOrigin = 'center';
+            blueFish.style.transform = 'scale(1.02)';
+            setTimeout(() => {
+                blueFish.style.transform = 'scale(1)';
+            }, 150);
+        }
+        
+        // Function to change red fish colors
+        function changeRedFishColors() {
+            const redMainParts = document.querySelectorAll('.red-main');
+            const redBodyParts = document.querySelectorAll('.red-body');
+            
+            const mainColor = getRandomColor();
+            const bodyColor = getRandomColor();
+            
+            // Change main red parts
+            redMainParts.forEach(part => {
+                part.style.fill = mainColor;
+            });
+            
+            // Change body parts
+            redBodyParts.forEach(part => {
+                part.style.fill = bodyColor;
+            });
+            
+            // Add a subtle animation effect with better scaling
+            redFish.style.transformOrigin = 'center';
+            redFish.style.transform = 'scale(1.02)';
+            setTimeout(() => {
+                redFish.style.transform = 'scale(1)';
+            }, 150);
+        }
+        
+        // Add hover effects
+        blueFish.addEventListener('mouseenter', function() {
+            this.style.opacity = '0.8';
+            this.style.transition = 'all 0.3s ease';
+        });
+        
+        blueFish.addEventListener('mouseleave', function() {
+            this.style.opacity = '1';
+        });
+        
+        redFish.addEventListener('mouseenter', function() {
+            this.style.opacity = '0.8';
+            this.style.transition = 'all 0.3s ease';
+        });
+        
+        redFish.addEventListener('mouseleave', function() {
+            this.style.opacity = '1';
+        });
+        
+        console.log('Color-changing fish loaded successfully!');
+    });
+    </script>
+</body>
+</html>
